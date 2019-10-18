@@ -1,0 +1,16 @@
+version: "3"
+
+#
+# run with 
+#   docker-compose -f docker-compose-scale.yml --compatibility up --build
+#
+services:
+  wildfly:
+    build:
+      context: ./wildfly
+    ports: 
+     - "8080-8090:8080"
+     - "9990-10000:9990"
+    deploy:
+      mode: replicated
+      replicas: 3

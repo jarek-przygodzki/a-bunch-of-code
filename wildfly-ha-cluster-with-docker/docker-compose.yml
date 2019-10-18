@@ -1,0 +1,18 @@
+version: "3"
+services:
+  wildfly-1:
+    build:
+      context: ./wildfly
+    environment:
+     - NODE_NAME=wildfly-1
+    ports:
+    - 8080:8080
+    - 9990:9990
+  wildfly-2:
+    build:
+      context: ./wildfly
+    environment:
+      - NODE_NAME=wildfly-2
+    ports:
+    - 8081:8080
+    - 9991:9990
