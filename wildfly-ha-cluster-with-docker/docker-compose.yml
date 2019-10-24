@@ -2,17 +2,26 @@ version: "3"
 services:
   wildfly-1:
     build:
-      context: ./wildfly
+      context: ./wildfly-worker
     environment:
      - NODE_NAME=wildfly-1
     ports:
-    - 8080:8080
-    - 9990:9990
+    - 8081:8080
+    - 9991:9990
   wildfly-2:
     build:
-      context: ./wildfly
+      context: ./wildfly-worker
     environment:
       - NODE_NAME=wildfly-2
     ports:
-    - 8081:8080
-    - 9991:9990
+    - 8082:8080
+    - 9992:9990
+  load-balancer:
+    build:
+      context: ./wildfly-load-balancer
+    environment:
+     - NODE_NAME=load-balancer
+    ports:
+    - 8080:8080
+    - 8090:8090
+    - 9990:9990

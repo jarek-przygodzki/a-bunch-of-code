@@ -9,8 +9,15 @@ services:
     build:
       context: ./wildfly
     ports: 
-     - "8080-8090:8080"
-     - "9990-10000:9990"
+     - "8081-8091:8080"
+     - "9991-10001:9990"
     deploy:
       mode: replicated
       replicas: 3
+  load-balancer:
+    build:
+      context: ./wildfly-load-balancer
+    ports:
+    - 8080:8080
+    - 8090:8090
+    - 9990:9990
